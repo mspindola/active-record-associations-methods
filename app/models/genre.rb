@@ -3,14 +3,14 @@ class Genre < ActiveRecord::Base
   has_many :artists, through: :songs
 
   def song_count
-    # return the number of songs in a genre
+    self.songs.count
   end
 
   def artist_count
-    # return the number of artists associated with the genre
+    self.artists.count
   end
 
   def all_artist_names
-    # return an array of strings containing every musician's name
+    self.artists.pluck(:name) #pluck can be used to query single or multiple columns from the underlying table of a model. It accepts a list of column names as an argument and returns an array of values of the specified columns with the corresponding data type.
   end
 end
